@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+    <h1>Upload Sales Data File</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="salesData" name="salesData" accept=".csv">
+        <button type="submit">Upload</button>
+    </form>
+    <p id="predictions"></p> <!-- Paragraph tag to display predictions -->
+    
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Create FormData object
+            const formData = new FormData();
+            formData.append('salesData', document.getElementById('salesData').files[0]);
+            
+            // Send AJAX request to upload file
+            fetch('/upload', { method: 'POST', body: formData })
+                .then(response => response.text())
+                .then(predictions => {
+                    // Update paragraph tag with predictions
+                    document.getElementById('predictions').innerText = 'Predictions: ' + predictions;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
