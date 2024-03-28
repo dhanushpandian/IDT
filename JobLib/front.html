@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Commission Prediction</title>
+</head>
+<body>
+    <h1>Sales Commission Prediction</h1>
+    <form id="predictForm">
+        <label for="salesAmount">Sales Amount:</label>
+        <input type="text" id="salesAmount" name="salesAmount"><br><br>
+        <label for="productDemand">Product Demand Level:</label>
+        <input type="text" id="productDemand" name="productDemand"><br><br>
+        <button type="submit">Predict</button>
+    </form>
+    <p id="predictionResult"></p>
+    
+    <script>
+        document.getElementById('predictForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get input values
+            const salesAmount = document.getElementById('salesAmount').value;
+            const productDemand = document.getElementById('productDemand').value;
+            
+            // Send input data to Flask backend for prediction
+            fetch('http://localhost:5000/predict', { // Adjust the URL to match your Flask server
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    sales_amount: salesAmount,
+                    product_demand_level: productDemand
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display prediction result
+                document.getElementById('predictionResult').innerText = 'Predicted Sales Commission: $' + data.sales_commission;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
