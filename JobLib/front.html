@@ -7,32 +7,57 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* Your CSS styles here */
         body {
-            background-color: #f5f5f5; /* Light gray background */
-            color: #333333; /* Text color */
+            background-color: #e6e6e6; /* Light grayish blue background */
+            color: #333333; /* Dark gray text color */
         }
         h1, h2, h3, h4, h5, h6 {
-            color: #00563f; /* Heading text color */
+            color: #1A2238; /* Dark blue heading text color */
         }
         .container {
             margin-top: 50px;
         }
         .btn-primary {
-            background-color: #00563f; /* Dark green button */
-            border-color: #00563f;
+            background-color: #4CAF50; /* Green button */
+            border-color: #4CAF50;
+            color: #FFFFFF; /* White text color */
         }
         .btn-primary:hover {
-            background-color: #003d2d; /* Dark green button on hover */
-            border-color: #003d2d;
+            background-color: #45a049; /* Darker green button on hover */
+            border-color: #45a049;
+            color: #FFFFFF; /* White text color */
         }
         .table {
-            background-color: #ffffff; /* White table background */
+            background-color: #FFFFFF; /* White table background */
+            color: #333333; /* Dark gray text color */
         }
         .table th, .table td {
-            border-color: #cccccc; /* Light gray table borders */
+            border-color: #CCCCCC; /* Light gray table borders */
         }
         .chart-container {
             margin-top: 20px;
+        }
+
+        /* Custom color classes */
+        .chart-color-1 { background-color: #1A2238; } /* Dark blue */
+        .chart-color-2 { background-color: #9DAAF2; } /* Light blue */
+        .chart-color-3 { background-color: #FF6A3D; } /* Orange */
+        .chart-color-4 { background-color: #F4DB7D; } /* Light yellow */
+        
+        /* Apply custom colors to specific elements */
+        .btn-primary-custom {
+            background-color: #FF6A3D; /* Orange button */
+            border-color: #FF6A3D;
+            color: #FFFFFF; /* White text color */
+        }
+        .btn-primary-custom:hover {
+            background-color: #F4DB7D; /* Light yellow button on hover */
+            border-color: #F4DB7D;
+            color: #FFFFFF; /* White text color */
+        }
+        .chart-color-custom {
+            color: #9DAAF2; /* Light blue chart color */
         }
     </style>
 </head>
@@ -87,8 +112,14 @@
                             labels: productNames,
                             datasets: [{
                                 label: 'Sales Amount',
-                                backgroundColor: '#3f704d', /* Dark green */
-                                data: salesAmounts
+                                data: salesAmounts,
+                                backgroundColor: [
+                                    '#1A2238',
+                                    '#9DAAF2',
+                                    '#FF6A3D',
+                                    '#F4DB7D',
+                                    '#6E4E15' /* Dark gold */
+                                ]
                             }]
                         },
                         options: {
@@ -108,8 +139,14 @@
                             labels: productNames,
                             datasets: [{
                                 label: 'Sales Amount',
-                                backgroundColor: ['#00563f', '#1d9d73', '#56c596', '#96dfbb', '#d6f8e3'], /* Shades of green */
-                                data: salesAmounts
+                                data: salesAmounts,
+                                backgroundColor: [
+                                    '#1A2238',
+                                    '#9DAAF2',
+                                    '#FF6A3D',
+                                    '#F4DB7D',
+                                    '#6E4E15' /* Dark gold */
+                                ]
                             }]
                         },
                         options: {
