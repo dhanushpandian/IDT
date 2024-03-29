@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 import joblib
 import pandas as pd
@@ -56,7 +56,7 @@ def predict():
 
 @app.route('/')
 def index():
-    return render_template('upload_form.html')
+    return render_template('front.html')  # Render front.html template
 
 
 if __name__ == '__main__':
