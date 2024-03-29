@@ -3,6 +3,7 @@ from flask_cors import CORS
 import joblib
 import pandas as pd
 import io
+import socket
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -59,5 +60,10 @@ def index():
     return render_template('front.html')  # Render front.html template
 
 
+# if __name__ == '__main__':
+#     # Get the host IP address dynamically
+#     host_ip = socket.gethostbyname(socket.gethostname())
+#     # Run the Flask app
+#     app.run(debug=True, host=host_ip)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
